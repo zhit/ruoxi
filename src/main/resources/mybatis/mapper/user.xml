@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.springboot.ruoxi.mapper.UserMapper" >
+    <select id="findList" resultType="com.springboot.ruoxi.model.User">
+        SELECT userid,username FROM user;
+    </select>
+    <select id="findOne" resultType="com.springboot.ruoxi.model.User">
+        SELECT userid,username FROM user WHERE userid=#{userid};
+    </select>
+    <insert id="insertOne" parameterType="com.springboot.ruoxi.model.User" useGeneratedKeys="true" keyProperty="userid">
+        INSERT  INTO  user(username) VALUES (#{username});
+    </insert>
+    <update id="updateOne" parameterType="int">
+        UPDATE  user SET username = 'wangwu' WHERE  userid=#{userid};
+    </update>
+    <delete id="deleteOne" parameterType="int">
+        DELETE  FROM user WHERE  userid=#{userid};
+    </delete>
+    <delete id="deleteAll" >
+        DELETE  FROM user;
+    </delete>
+</mapper>
